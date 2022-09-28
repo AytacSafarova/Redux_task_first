@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import HomePage from "./pages/homePage/homePage";
+import { Provider } from "react-redux";
+import { Routes, Link, Route } from "react-router-dom";
+import CustomerPage from "./pages/customerListPage/customerListPage";
+import FavoritesPage from "./pages/favoritesPage/favoritesPage";
+import { createStore } from "redux";
+import { Reducers } from "./redux/reducers/reducers";
+const customerStore = createStore(Reducers);
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={customerStore}>
+      <HomePage />
+      <Routes>
+        <Route path="/customers" element={<CustomerPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+      </Routes>
+    </Provider>
   );
 }
 
