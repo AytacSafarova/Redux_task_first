@@ -37,7 +37,7 @@ function FavoritesPage() {
   return (
     <>
       <h1>Favorites customers</h1>
-      <Button onClick={empty}>Empty Favorites</Button>
+      <Button onClick={empty} style={{marginBottom:"20px"}}>Empty Favorites</Button>
       <Table dataSource={favorite_customers} columns={columns} />
     </>
   );
